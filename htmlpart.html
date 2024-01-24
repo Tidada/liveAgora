@@ -1,0 +1,35 @@
+ <script type="text/javascript">
+        var liveOnline = {{ $live ? 'true' : 'false' }};
+        @if ($live)
+        var userid = '{{auth()->id()}}';
+        var username = '{{auth()->user()->username}}';
+        var creator_name = "{{$creator->username}}";
+          var appIdAgora = '{{ $settings->agora_app_id }}'; // set app id
+          var agorachannelName = '{{ $live->channel }}'; // set channel name
+          var liveMode = true;
+          var liveType = '{{ $live->type }}';
+          var liveCreator = {{ $creator->id == auth()->id() ? 'true' : 'false' }};
+          var role = "{{ $creator->id == auth()->id() ? 'host' : 'audience' }}";
+          var availability = '{{ $live->availability }}';
+          var textMuteAudio = "{{ __('general.mute_audio') }}";
+          var textUnmuteAudio = "{{ __('general.unmute_audio') }}";
+          var textMuteVideo = "{{ __('general.mute_video') }}";
+          var textUnmuteVideo = "{{ __('general.unmute_video') }}";
+          var textShareScreen = "{{ __('general.share_screen') }}";
+          var textStopShareScreen = "{{ __('general.stop_share_screen') }}";
+          var textShareScreen = "{{ __('general.share_screen') }}";
+          var textRaiseHand = "{{ __('general.live_raise_hand') }}";
+          var textLowerHand = "{{ __('general.live_lower_hand') }}";
+          var make_as_host = "{{ __('general.make_as_host') }}";
+          var make_as_viewer = "{{ __('general.make_as_viewer') }}";
+        @endif
+    </script>
+
+    @if ($live)
+      <script src="{{ asset('public/js/agora/AgoraRTCSDK-v4.js') }}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
+    @endif
+
+<div id="user-streams">
+
+                    </div> 
